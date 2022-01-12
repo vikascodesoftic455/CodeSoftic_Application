@@ -183,7 +183,9 @@ const login = async(req,res,next)=>{
 }
 
 
-qhafdh
+const signoput  =()=>{
+    console.log("logout")
+}
 
 
 
