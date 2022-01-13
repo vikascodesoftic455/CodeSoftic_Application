@@ -2,12 +2,14 @@ const express = require('express')
 const { check } = require('express-validator')
 const UserController  = require('../../Controllers/UserController/UserController')
 
+
 const router = express.Router()
+const iSAuthenticationUser = require('../../middleware/AuthenticationUser')
 
 
 router
      .route('/')
-     .get((req,res)=>{
+     .get(iSAuthenticationUser,(req,res)=>{
          res.send('<h1>Hello Code Softic</h1>')
      })
 
