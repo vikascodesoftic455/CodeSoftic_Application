@@ -1,11 +1,11 @@
 require('dotenv').config();
 const express = require('express')
 const functions = require("firebase-functions");
-// const db = require('./DB/Db')
+ const db = require('./DB/Db')
 const UserRoute = require('./Router/BusinessUserRoutes/UserRoute')
 const app = express()
 
-const port =process.env.port
+const port =process.env.PORT
 
 
 //*********************Midlleware********************** */
