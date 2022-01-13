@@ -44,10 +44,24 @@ router
 
 
 
-   // This are Login Route    
+// This are Login Route    
 router
 .route('/login')   
-.post(UserController.login) 
+.post(
+       [
+        check('email').isEmail().withMessage({
+            message: 'Not an email',
+            errorCode: 1,
+        }),
+        check('password', 'The password must be 8+ chars long and contain a number')
+        .not()
+        .isIn(['123', 'password', 'god'])
+        .withMessage('Do not use a common word as the password')
+        .isLength({ min: 8 })
+        .matches(/\d/),
+       ],
+       UserController.login
+    ) 
 
 
 module.exports=router
