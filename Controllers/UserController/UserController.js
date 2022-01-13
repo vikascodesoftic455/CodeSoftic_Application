@@ -87,6 +87,10 @@ const signup = async(req,res,next)=>{
     }
 }
 
+
+//*****************************************Login functionallty*************************************************************************************************************** */
+
+
 const login = async(req,res,next)=>{
   try{
       const {email,password} =req.body
