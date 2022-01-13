@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express')
 const functions = require("firebase-functions");
- const db = require('./DB/Db')
+const db = require('./DB/Db')
 const UserRoute = require('./Router/BusinessUserRoutes/UserRoute')
+const ProductRoute =require('./Router/Add_Product_Router/ProductRouter')
 const app = express()
 
 const port =process.env.PORT
@@ -20,7 +21,7 @@ app.use(express.json())
 
 
 app.use('/',UserRoute)
-
+app.use('/api',ProductRoute)
 
 
 app.listen(port,()=>{
