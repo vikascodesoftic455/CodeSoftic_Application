@@ -1,5 +1,7 @@
 const BusinessUser =require('../../Model/BusinessUserSchema')
 const bcrypt =require('bcrypt')
+const jwt = require('jsonwebtoken')
+const SecretKey = process.env.SECRET_KEY
 
 const signup = async(req,res,next)=>{
     try{ 
@@ -106,6 +108,7 @@ const login = async(req,res,next)=>{
       let User 
             try{
                 User = await BusinessUser.findOne({Email:email})
+                console.log(User)
             }catch(err){
                res
                 .status(501)
@@ -127,7 +130,7 @@ const login = async(req,res,next)=>{
                 })
             }
 
-      const match = await bcrypt.compare(password,User.password)  
+      const match = await bcrypt.compare(password,User.Password) 
         if(match){
             let token 
                     try{
@@ -144,7 +147,7 @@ const login = async(req,res,next)=>{
                         res
                         .status(501)
                         .json({
-                            status:"fail",
+                            status:"fail gkghhkhh",
                             HowToCreateUsreSignup:req.requestTime,
                             data:{
                               err
@@ -158,7 +161,7 @@ const login = async(req,res,next)=>{
                              UserName:User.UserName,
                              Email:User.Email,
                              PhoneNumber:User.PhoneNumber,
-                             Staus:User.Active
+                             token:token
                        })         
         }else{
             res
