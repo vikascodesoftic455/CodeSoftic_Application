@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema({
         Maximum_Retail_Price:{
             type:Number
         },
-        CoverImage:String,
+        CoverImage:{type:String},
         Images:[String],
         Price:{
             type:Number
